@@ -28,9 +28,40 @@ valider les retraits du compte bancaire et surveiller les dépôts sur le compte
 /* +++++++++++++++++ Partie 1: Créer le compte bancaire +++++++++++++++++++++ */
 /* 📝​ Créer les options de débit et de crédit du compte bancaire */
 /* 👉​ Définir une classe et utiliser des boucles pour créer un compte bancaire valide en fonction du choix de l'utilisateur.*/
+class VirtualBankSystem {
+    var accountType = ""
+    func welcomeCustomer() {
+        print("Welcome to your virtual bank system.")
+    }
+    func onboardCustomerAccountOpening() {
+        print("What kind of account would you like to open?")
+        print("1. Debit account")
+        print("2. Credit account")
+    }
+    /* 👉​ Utiliser des instructions de commutation pour sélectionner le bon type de compte bancaire
+    à partir de la liste des types de comptes bancaires valides fournie par le simulateur de compte bancaire.*/
+    func makeAccount(numberPadKey: Int) {
+        print("The selected option is \(numberPadKey).")
+        switch numberPadKey {
+        case 1:
+            accountType = "debit"
+        case 2:
+            accountType = "credit"
+        default:
+            print("Invalid input: \(numberPadKey)")
+            return
+        }
+        print("You have opened a \(accountType) account.")
+    }
+}
+let virtualBankSystem = VirtualBankSystem()
+virtualBankSystem.welcomeCustomer()
 
-/* 👉​ Utiliser des instructions de commutation pour sélectionner le bon type de compte bancaire
-à partir de la liste des types de comptes bancaires valides fournie par le simulateur de compte bancaire.*/
+repeat {
+    virtualBankSystem.onboardCustomerAccountOpening()
+    let numberPadKey = Int.random(in: 1...3)
+    virtualBankSystem.makeAccount(numberPadKey: numberPadKey)
+} while virtualBankSystem.accountType == ""
 
 /*
 ------------------------------- 🧪​ TESTS 1️⃣​ -------------------------------------
