@@ -134,6 +134,19 @@ struct BankAccount {
     }
 }
 
+var bankAccount = BankAccount()
+/* Test des opérations bancaires de débit */
+print (bankAccount.debitBalanceInfo)
+bankAccount.debitDeposit(100) /* Dépôt */
+bankAccount.debitWithdraw(20) /* Retrait */
+bankAccount.debitWithdraw(81)
+print(bankAccount.creditBalanceInfo) /* solde créditeur actuel */
+bankAccount.creditWithdraw(101) /*Retrait*/
+bankAccount.creditWithdraw(100)
+bankAccount.creditDeposit(50) /* Dépôt */
+bankAccount.creditDeposit(50)
+bankAccount.creditDeposit(100)
+
 /*
 ------------------------------- 🧪​ TESTS 2️⃣​​ -------------------------------------
 Debit balance: $0
