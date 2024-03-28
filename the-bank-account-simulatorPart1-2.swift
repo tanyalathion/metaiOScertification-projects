@@ -163,27 +163,3 @@ Credit deposit: $100. Available credit: $200
 Overpaid credit balance.
 --------------------------------------------------------------------------------
 */
-
-/* ++++++++++++++++ Partie 3: Gestion du compte bancaire ++++++++++++++++++++ */
-/* 📝​ Gérer le compte bancaire à l'aide des opérations définies. */
-/* 👉​ Utiliser des fonctions pour gérer la logique de transfert du compte bancaire.*/
-
-/* 👉​ Utiliser des boucles pour gérer le compte bancaire en fonction du choix de l'utilisateur.*/
-
-/* 👉​ Utiliser des instructions conditionnelles pour sélectionner
-l'opération du compte bancaire en fonction du type de compte bancaire.*/
-
-/* 👉​ Utiliser des instructions de commutation pour choisir la bonne opération de compte bancaire
-dans la liste des opérations de compte bancaire valides fournie par le simulateur de compte bancaire.*/
-
-/*
-------------------------------- 🧪​ TESTS 3️⃣ -------------------------------------
-​What would you like to do?
-1. Check bank account
-2. Withdraw money
-3. Deposit money
-4. Close the system
-Selected option: 4.
-The system is closed.
---------------------------------------------------------------------------------
-*/
