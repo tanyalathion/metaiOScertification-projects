@@ -26,13 +26,69 @@ valider les retraits du compte bancaire et surveiller les dépôts sur le compte
 */
 
 /* +++++++++++++++++ Partie 1: Créer le compte bancaire +++++++++++++++++++++ */
+/* 📝​ Créer les options de débit et de crédit du compte bancaire */
+/* 👉​ Définir une classe et utiliser des boucles pour créer un compte bancaire valide en fonction du choix de l'utilisateur.*/
 
-/* ++++++++++ Partie 2: Définir les opérations du compte bancaire +++++++++++ */
-
-/* ++++++++++++++++ Partie 3: Gestion du compte bancaire ++++++++++++++++++++ */
+/* 👉​ Utiliser des instructions de commutation pour sélectionner le bon type de compte bancaire
+à partir de la liste des types de comptes bancaires valides fournie par le simulateur de compte bancaire.*/
 
 /*
---------------------------------- TESTS ----------------------------------------
+------------------------------- 🧪​ TESTS 1️⃣​ -------------------------------------
+Welcome to your virtual bank system.
+What kind of account would you like to open?
+1. Debit account
+2. Credit account
+The selected option is 1.
+You have opened a debit account.
+--------------------------------------------------------------------------------
+*/
 
+/* ++++++++++ Partie 2: Définir les opérations du compte bancaire +++++++++++ */
+/* 📝​ Configurer le compte bancaire pour qu'il puisse gérer différents types d'opérations,
+y compris les retraits et les dépôts. */
+/* 👉​ Utiliser des structures et des classes pour créer des opérations de compte bancaire valides
+et modulariser le code du projet.*/
+
+/* 👉​ Configurer des instructions conditionnelles pour mettre en œuvre
+la logique des retraits des comptes bancaires et des dépôts sur les comptes bancaires.*/
+
+/*
+------------------------------- 🧪​ TESTS 2️⃣​​ -------------------------------------
+Debit balance: $0
+Debit deposit: $100. Debit balance: $100
+Debit withdraw: $20. Debit balance: $80
+Insufficient funds to withdraw $81. Debit balance: $80
+Available credit: $100
+Insufficient credit to withdraw $101. Available credit: $100
+Credit withdraw: $100. Available credit: $0
+Credit deposit: $50. Available credit: $50
+Credit deposit: $50. Available credit: $100
+Paid off credit balance.
+Credit deposit: $100. Available credit: $200
+Overpaid credit balance.
+--------------------------------------------------------------------------------
+*/
+
+/* ++++++++++++++++ Partie 3: Gestion du compte bancaire ++++++++++++++++++++ */
+/* 📝​ Gérer le compte bancaire à l'aide des opérations définies. */
+/* 👉​ Utiliser des fonctions pour gérer la logique de transfert du compte bancaire.*/
+
+/* 👉​ Utiliser des boucles pour gérer le compte bancaire en fonction du choix de l'utilisateur.*/
+
+/* 👉​ Utiliser des instructions conditionnelles pour sélectionner
+l'opération du compte bancaire en fonction du type de compte bancaire.*/
+
+/* 👉​ Utiliser des instructions de commutation pour choisir la bonne opération de compte bancaire
+dans la liste des opérations de compte bancaire valides fournie par le simulateur de compte bancaire.*/
+
+/*
+------------------------------- 🧪​ TESTS 3️⃣ -------------------------------------
+​What would you like to do?
+1. Check bank account
+2. Withdraw money
+3. Deposit money
+4. Close the system
+Selected option: 4.
+The system is closed.
 --------------------------------------------------------------------------------
 */
