@@ -47,9 +47,11 @@ class VirtualBankSystem {
             accountType = "debit"
         case 2:
             accountType = "credit"
+        /* Les instructions de commutation doivent toujours traiter tous les cas.
+        Le cas par défaut traite tous les cas que les autres cas de commutation ne traitent pas.*/
         default:
             print("Invalid input: \(numberPadKey)")
-            return
+            return /*L'instruction break quitte le cas par défaut sans rien faire d'autre.*/
         }
         print("You have opened a \(accountType) account.")
     }
@@ -79,9 +81,58 @@ You have opened a debit account.
 y compris les retraits et les dépôts. */
 /* 👉​ Utiliser des structures et des classes pour créer des opérations de compte bancaire valides
 et modulariser le code du projet.*/
+struct BankAccount {
+    var debitBalance = 0
+    var creditBalance = 0
+    let creditLimit = 100
+    var debitBalanceInfo: String {
+            "Debit balance: $\(debitBalance)"
+    }
+    var availableCredit: Int {
+        creditLimit + creditBalance
+    }
+    var creditBalanceInfo: String {
+        "Available credit: $\(availableCredit)"
+    }
+    /* 👉​ Configurer des instructions conditionnelles pour mettre en œuvre
+    la logique des retraits des comptes bancaires et des dépôts sur les comptes bancaires.*/
 
-/* 👉​ Configurer des instructions conditionnelles pour mettre en œuvre
-la logique des retraits des comptes bancaires et des dépôts sur les comptes bancaires.*/
+    /* Dépôt au débit */
+    mutating func debitDeposit(_ amount: Int) {
+        debitBalance += amount
+        print("Debit deposit: $\(amount). \(debitBalanceInfo)")
+    }
+    /* Retrait de débit */
+    mutating func debitWithdraw(_ amount: Int){
+        if amount > debitBalance {
+            print("Insufficient fund to withdraw $\(amount). \(debitBalanceInfo)")
+        }else{
+            debitBalance -= amount
+            print("Debit withdraw: $\(amount). \(debitBalanceInfo)")
+        }
+    }
+
+    /* Dépôt de crédit */
+    mutating func creditDeposit(_ amount: Int) {
+        creditBalance += amount
+        print("Credit deposit: $\(amount). \(creditBalanceInfo)")
+        if creditBalance == 0 {
+            print("Paid off credit balance.")
+        } else if creditBalance > 0 {
+            print("Overpaid credit balance.")
+        }
+    }
+
+    /* Retrait de crédit */
+    mutating func creditWithdraw(_ amount: Int){
+        if amount > availableCredit {
+            print("Insufficient credit to withdraw $\(amount). \(creditBalanceInfo)")
+        }else{
+            creditBalance -= amount
+            print("Credit withdraw: $\(amount). \(creditBalanceInfo)")
+        }
+    }
+}
 
 /*
 ------------------------------- 🧪​ TESTS 2️⃣​​ -------------------------------------
