@@ -48,3 +48,13 @@ for _ in 0..<5 {
         print("Main Dish!")
     }
 }
+// Results should be:
+// Main Dish!
+// Appetizer
+// Margherita Flatbread
+// ["Margherita", "Flatbread"]
+// Main Dish!
+// Appetizer
+// Margherita Flatbread
+// ["Margherita", "Flatbread"]
+// Main Dish!
