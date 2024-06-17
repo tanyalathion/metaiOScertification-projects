@@ -1,10 +1,8 @@
-import Foundation
-
 protocol Dish {
     var name: String {get}
     var preparationMinutes: Int {get set}
     func prepare ()
-    func plate (artisticLevel: Int) -> Int
+    func plate (artisticLevel: Int)
 }
 
 class MainDish: Dish {
@@ -27,3 +25,5 @@ let superSpaghetti = MainDish(
     preparationMinutes: 35
 )
 
+superSpaghetti.prepare()
+superSpaghetti.plate(artisticLevel: 10)
