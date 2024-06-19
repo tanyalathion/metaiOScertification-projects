@@ -16,22 +16,18 @@ struct MenuItemsView: View {
                     .font(.largeTitle)
                 
                 Spacer()
-            }
-            .navigationBarTitle("Menu Items")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    // Action lorsque le bouton est pressé
-                    showMenuOptions()
-                }) {
-                    Image(systemName: "gear")
+                
+                NavigationLink(destination: MenuItemsOptionView()) {
+                    Text("See options")
+                        .font(.headline)
+                        .padding()
+                        .foregroundColor(Color.black)
+                        .background(Color.yellow)
+                        .cornerRadius(10)
                 }
-            )
-        }
-    }
-
-    func showMenuOptions() {
-        NavigationLink(destination: MenuItemsOptionView()) {
-            EmptyView() // Utilisation de EmptyView pour cacher le lien de navigation visible
+                .buttonStyle(PlainButtonStyle())
+            }
+            .navigationBarTitle("Menu")
         }
     }
 }
