@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D8B084E2C27873B008EB04E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B084D2C27873B008EB04E /* Enums.swift */; };
 		1D96BAAF2C236E570059408F /* little_lemon_demoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96BAAE2C236E570059408F /* little_lemon_demoApp.swift */; };
 		1D96BAB32C236E590059408F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D96BAB22C236E590059408F /* Assets.xcassets */; };
 		1D96BAB62C236E590059408F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D96BAB52C236E590059408F /* Preview Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D8B084D2C27873B008EB04E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1D96BAAB2C236E570059408F /* little-lemon-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-lemon-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D96BAAE2C236E570059408F /* little_lemon_demoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = little_lemon_demoApp.swift; sourceTree = "<group>"; };
 		1D96BAB22C236E590059408F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				1D96BAAE2C236E570059408F /* little_lemon_demoApp.swift */,
 				1D96BABC2C23704F0059408F /* MenuItemsView.swift */,
 				1D96BABE2C23707D0059408F /* MenuItemsOptionView.swift */,
+				1D8B084D2C27873B008EB04E /* Enums.swift */,
 				1D96BAC02C23709C0059408F /* MenuItemDetailsView.swift */,
 				1D96BAB22C236E590059408F /* Assets.xcassets */,
 				1D96BAB42C236E590059408F /* Preview Content */,
@@ -145,6 +148,7 @@
 			files = (
 				1D96BABD2C23704F0059408F /* MenuItemsView.swift in Sources */,
 				1D96BAAF2C236E570059408F /* little_lemon_demoApp.swift in Sources */,
+				1D8B084E2C27873B008EB04E /* Enums.swift in Sources */,
 				1D96BABF2C23707D0059408F /* MenuItemsOptionView.swift in Sources */,
 				1D96BAC12C23709C0059408F /* MenuItemDetailsView.swift in Sources */,
 			);
