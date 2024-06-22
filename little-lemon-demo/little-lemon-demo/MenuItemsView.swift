@@ -16,6 +16,7 @@ struct MenuItem: Identifiable {
 }
 
 struct MenuItemsView: View {
+    @State private var showingFilterSheet = false
     let mockMenuItems: [MenuItem] = [
             MenuItem(category: "Food", imageName: "item picture", name: "Plate 1"),
             MenuItem(category: "Food", imageName: "item picture", name: "Plate 2"),
@@ -51,13 +52,17 @@ struct MenuItemsView: View {
         }
         .navigationBarTitle("Menu")
         .navigationBarItems(trailing:
-            NavigationLink(destination: MenuItemsOptionView()) {
+            Button(action: {
+                showingFilterSheet.toggle()
+            }) {
                 Image(systemName: "slider.horizontal.3")
-                .font(.headline)
-                .foregroundColor(.blue)
-                .padding()
+                    .font(.title)
+                    .foregroundColor(.black)
             }
         )
+        .sheet(isPresented: $showingFilterSheet) {
+            MenuItemsOptionView()
+        }
     }
 }
 
@@ -95,14 +100,6 @@ struct CategoryGrid: View {
             }
         }
         .padding(.bottom, 20)
-    }
-}
-
-struct MenuItemsOptionView: View {
-    var body: some View {
-        Text("Menu Items Options")
-            .font(.largeTitle)
-            .padding()
     }
 }
 
