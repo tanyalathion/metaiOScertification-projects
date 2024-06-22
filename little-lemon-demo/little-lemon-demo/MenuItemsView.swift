@@ -52,14 +52,15 @@ struct MenuItemsView: View {
         .navigationBarTitle("Menu")
         .navigationBarItems(trailing:
             NavigationLink(destination: MenuItemsOptionView()) {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                .font(.title)
-                .foregroundColor(.black)
+                Image(systemName: "slider.horizontal.3")
+                .font(.headline)
+                .foregroundColor(.blue)
                 .padding()
             }
         )
     }
 }
+
 
 struct CategoryGrid: View {
     let category: String
@@ -74,23 +75,45 @@ struct CategoryGrid: View {
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
                 ForEach(items) { item in
-                    VStack {
-                        Image(item.imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(10)
-
-                        Text(item.name)
-                            .font(.caption)
-                            .multilineTextAlignment(.center)
+                    NavigationLink(destination: MenuItemDetailsView()) {
+                        VStack {
+                            Image(item.imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 100)
+                                .cornerRadius(10)
+                            
+                            Text(item.name)
+                                .font(.caption)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding(5)
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(10)
                     }
-                    .padding(5)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(10)
                 }
             }
         }
         .padding(.bottom, 20)
     }
+}
+
+struct MenuItemsOptionView: View {
+    var body: some View {
+        Text("Menu Items Options")
+            .font(.largeTitle)
+            .padding()
+    }
+}
+
+struct MenuItemDetailsView: View {
+    var body: some View {
+        Text("Menu Item Details")
+            .font(.largeTitle)
+            .padding()
+    }
+}
+
+#Preview  {
+        MenuItemsView()
 }

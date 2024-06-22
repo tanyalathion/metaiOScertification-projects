@@ -8,9 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct MenuItemsOptionView: View {
-    var body: some View {
-            Text("Menu Items Options")
-                .font(.title)
-    }
+#Preview  {
+    MenuItemsOptionView()
 }
