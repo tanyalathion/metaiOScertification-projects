@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct MenuItemDetailsView: View {
-    
     var body: some View {
         NavigationView {
             VStack {
