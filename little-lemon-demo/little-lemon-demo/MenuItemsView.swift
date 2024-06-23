@@ -109,14 +109,6 @@ struct CategoryGrid: View {
     }
 }
 
-struct MenuItemDetailsView: View {
-    var body: some View {
-        Text("Menu Item Details")
-            .font(.largeTitle)
-            .padding()
-    }
-}
-
 struct MenuItemsView_Previews: PreviewProvider {
     static var previews: some View {
         MenuItemsView()
