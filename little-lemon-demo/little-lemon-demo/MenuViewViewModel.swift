@@ -7,31 +7,6 @@
 
 import Foundation
 
-enum MenuCategory {
-    case food
-    case drinks
-    case desserts
-
-    var description: String {
-        switch self {
-        case .food:
-            return "Food"
-        case .drinks:
-            return "Drinks"
-        case .desserts:
-            return "Dessert"
-        }
-    }
-}
-
-struct MenuItem: Identifiable {
-    var id = UUID()
-    var category: Category // Catégorie de l'élément
-    var imageName: String // Nom de l'image dans le catalogue d'assets
-    var name: String // Nom de l'élément
-    let ingredients: [Ingredient]
-}
-
 class MenuViewViewModel: ObservableObject {
     // Propriétés pour chaque catégorie d'éléments de menu
     @Published var foodItems: [MenuItem]
