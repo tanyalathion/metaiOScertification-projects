@@ -7,37 +7,23 @@
 
 import Foundation
 
-enum Ingredient {
-    case spinach
-    case broccoli
-    case carrot
-    case pasta
-    case tomatoSauce
-    case chocolate
-    case cream
-    case apple
-    case lemon
-    
-    var description: String {
-        switch self {
-        case .spinach:
-            return "Spinach"
-        case .broccoli:
-            return "Broccoli"
-        case .carrot:
-            return "Carrot"
-        case .pasta:
-            return "Pasta"
-        case .tomatoSauce:
-            return "Tomato Sauce"
-        case.chocolate:
-            return "Chocolate"
-        case.cream:
-            return "Cream"
-        case.apple:
-            return "Apple"
-        case.lemon:
-            return "Lemon"
-        }
-    }
+enum Ingredient: String, CaseIterable {
+    case spinach = "Spinach"
+    case broccoli = "Broccoli"
+    case carrot = "Carrot"
+    case pasta = "Pasta"
+    case cheese = "Cheese"
+    case bread = "Bread"
+    case eggs = "Eggs"
+    case bacon = "Bacon"
+    case potatoes = "Potatoes"
+    case butter = "Butter"
+    case tomatoSauce = "Tomato Sauce"
+    case beef = "Beef"
+    case chocolate = "Chocolate"
+    case cream = "Cream"
+    case apple = "Apple"
+    case lemon = "Lemon"
+    case alcool = "Alcool"
+    case soft = "No special ingredients"
 }

@@ -8,55 +8,47 @@
 import Foundation
 
 class MenuViewViewModel: ObservableObject {
-    // Propriétés pour chaque catégorie d'éléments de menu
-    @Published var foodItems: [MenuItem]
-    @Published var drinkItems: [MenuItem]
-    @Published var dessertItems: [MenuItem]
+    @Published var menuItems: [MenuItem] = mockMenuItems
+    @Published var selectedCategory: MenuCategory = .all
+    @Published var sortOption: SortOption = .mostPopular
+    @Published var showFilterOptions: Bool = false
     
-    init() {
-        // Exemple : Initialisation des éléments du menu pour chaque catégorie
-        foodItems = [
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 1", ingredients: [.spinach, .pasta]),
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 2", ingredients: [.spinach, .broccoli, .carrot]),
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 3", ingredients: [.pasta, .tomatoSauce]),
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 4", ingredients: [.broccoli, .carrot]),
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 5", ingredients: [.spinach, .broccoli, .carrot, .pasta, .tomatoSauce]),
-            MenuItem(category: .food, imageName: "item picture", name: "Plate 6", ingredients: []),
-        ]
-        
-        drinkItems = [
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 1", ingredients: []),
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 2", ingredients: []),
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 3", ingredients: []),
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 4", ingredients: []),
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 5", ingredients: []),
-            MenuItem(category: .drinks, imageName: "item picture", name: "Drink 6", ingredients: []),
-        ]
-        
-        dessertItems = [
-            MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 1", ingredients: [.chocolate, .apple]),
-            MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 2", ingredients: [.apple, .cream]),
-            MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 3", ingredients: [.chocolate, .lemon]),
-            MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream]),
-        ]
-    }
+    
 }
 
-let mockMenuItems: [MenuItem] = [
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 1", ingredients: [.spinach, .pasta]),
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 2", ingredients: [.spinach, .broccoli, .carrot]),
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 3", ingredients: [.pasta, .tomatoSauce]),
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 4", ingredients: [.broccoli, .carrot]),
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 5", ingredients: [.spinach, .broccoli, .carrot, .pasta, .tomatoSauce]),
-    MenuItem(category: .food, imageName: "item picture", name: "Plate 6", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 1", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 2", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 3", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 4", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 5", ingredients: []),
-    MenuItem(category: .drinks, imageName: "item picture", name: "Drink 6", ingredients: []),
-    MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 1", ingredients: [.chocolate, .apple]),
-    MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 2", ingredients: [.apple, .cream]),
-    MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 3", ingredients: [.chocolate, .lemon]),
-    MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream]),
+let mockFoodItems: [MenuItem] = [
+    MenuItem(category: .food, imageName: "item picture", name: "Carbonnara", ingredients: [.bacon, .pasta, .eggs], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Fondue", ingredients: [.cheese, .bread], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Raclette", ingredients: [.cheese, .potatoes], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Burger", ingredients: [.beef, .bread, .potatoes], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Meat and Vegetables", ingredients: [.spinach, .broccoli, .carrot, .beef], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Full prot plate", ingredients: [.beef, .eggs], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Bolo Pasta", ingredients: [.pasta, .tomatoSauce, .beef], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Morning Plate", ingredients: [.eggs, .bacon], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Alpen Macaroni", ingredients: [.pasta, .bacon, .cheese, .cream], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Vegan Plate", ingredients: [.carrot, .bread, .broccoli, .spinach], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Diet Raclette", ingredients: [.cheese], price: 12.99, ordersCount: 10),
+    MenuItem(category: .food, imageName: "item picture", name: "Simple Pasta", ingredients: [.pasta, .butter], price: 12.99, ordersCount: 10),
     ]
+    
+let mockDrinkItems: [MenuItem] = [
+    MenuItem(category: .drinks, imageName: "item picture", name: "Coke", ingredients: [.soft], price: 2.99, ordersCount: 108),
+    MenuItem(category: .drinks, imageName: "item picture", name: "Ice Tea", ingredients: [.soft], price: 2.99, ordersCount: 165),
+    MenuItem(category: .drinks, imageName: "item picture", name: "Lemonade", ingredients: [.soft], price: 1.99, ordersCount: 202),
+    MenuItem(category: .drinks, imageName: "item picture", name: "Beer", ingredients: [.alcool], price: 3.50, ordersCount: 89),
+    MenuItem(category: .drinks, imageName: "item picture", name: "Red Wine", ingredients: [.alcool], price: 4.5, ordersCount: 34),
+    MenuItem(category: .drinks, imageName: "item picture", name: "White Wine", ingredients: [.alcool], price: 4.5, ordersCount: 47),
+    ]
+    
+let mockDessertItems: [MenuItem] = [
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 1", ingredients: [.chocolate, .apple], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 2", ingredients: [.apple, .cream], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 3", ingredients: [.chocolate, .lemon], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream], price: 12.99, ordersCount: 10),
+        MenuItem(category: .desserts, imageName: "item picture", name: "Dessert 4", ingredients: [.chocolate,.cream], price: 12.99, ordersCount: 10),
+    ]
+
+let mockMenuItems: [MenuItem] = mockFoodItems + mockDrinkItems + mockDessertItems

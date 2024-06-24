@@ -15,7 +15,7 @@ protocol MenuItemProtocol {
     var image: String {get}
     var category: MenuCategory { get }
     var ordersCount: Int { get set }
-    var ingredients: [Ingredient] { get }
+    var ingredients: [Ingredient] { get set }
 }
 
 struct MenuItem: Identifiable {
@@ -23,7 +23,7 @@ struct MenuItem: Identifiable {
     let category: MenuCategory // Catégorie de l'élément
     let imageName: String // Nom de l'image dans le catalogue d'assets
     let name: String // Nom de l'élément
-    let ingredients: [Ingredient]
+    var ingredients: [Ingredient]
     let price: Double
     var ordersCount: Int = 0
 }
