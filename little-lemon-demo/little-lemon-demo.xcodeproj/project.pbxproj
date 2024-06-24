@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D5FB5EB2C2A06F700B99DFA /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5FB5EA2C2A06F600B99DFA /* MenuItem.swift */; };
+		1D5FB5ED2C2A176800B99DFA /* MenuItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5FB5EC2C2A176800B99DFA /* MenuItemCardView.swift */; };
 		1D8B084E2C27873B008EB04E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B084D2C27873B008EB04E /* Enums.swift */; };
 		1D8B08502C289ED5008EB04E /* MenuViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B084F2C289ED5008EB04E /* MenuViewViewModel.swift */; };
 		1D8B08522C289FE7008EB04E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B08512C289FE7008EB04E /* Ingredient.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		1D5FB5EA2C2A06F600B99DFA /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		1D5FB5EC2C2A176800B99DFA /* MenuItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCardView.swift; sourceTree = "<group>"; };
 		1D8B084D2C27873B008EB04E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		1D8B084F2C289ED5008EB04E /* MenuViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewViewModel.swift; sourceTree = "<group>"; };
 		1D8B08512C289FE7008EB04E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				1D8B08512C289FE7008EB04E /* Ingredient.swift */,
 				1D5FB5EA2C2A06F600B99DFA /* MenuItem.swift */,
 				1D8B084D2C27873B008EB04E /* Enums.swift */,
+				1D5FB5EC2C2A176800B99DFA /* MenuItemCardView.swift */,
 				1D8B084F2C289ED5008EB04E /* MenuViewViewModel.swift */,
 				1D96BAB22C236E590059408F /* Assets.xcassets */,
 				1D96BAB42C236E590059408F /* Preview Content */,
@@ -161,6 +164,7 @@
 				1D8B084E2C27873B008EB04E /* Enums.swift in Sources */,
 				1D96BABF2C23707D0059408F /* MenuItemsOptionView.swift in Sources */,
 				1D5FB5EB2C2A06F700B99DFA /* MenuItem.swift in Sources */,
+				1D5FB5ED2C2A176800B99DFA /* MenuItemCardView.swift in Sources */,
 				1D8B08502C289ED5008EB04E /* MenuViewViewModel.swift in Sources */,
 				1D96BAC12C23709C0059408F /* MenuItemDetailsView.swift in Sources */,
 			);

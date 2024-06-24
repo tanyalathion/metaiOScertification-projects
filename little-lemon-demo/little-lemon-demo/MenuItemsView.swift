@@ -9,75 +9,65 @@ import Foundation
 import SwiftUI
 
 struct MenuItemsView: View {
-    @State private var showingFilterSheet = false
-    @State private var items: [MenuItem] = []
-    @State private var selectedCategories: [Category] = []
-    @State private var filteredItems: [MenuItem] = []
+    @ObservedObject var viewModel = MenuViewViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    CategoryGrid(category: .food, items: filteredItems.filter { $0.category == .food })
-                    CategoryGrid(category: .drinks, items: filteredItems.filter { $0.category == .drinks })
-                    CategoryGrid(category: .desserts, items: filteredItems.filter { $0.category == .desserts })
-                }
-                .padding()
-            }
-            .navigationTitle("Menu")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    showingFilterSheet.toggle()
-                }) {
-                    Image(systemName: "slider.horizontal.3")
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                }
-            )
-            .sheet(isPresented: $showingFilterSheet) {
-                MenuItemsOptionView(selectedCategories: $selectedCategories)
-            }
-            .onAppear {
-                filteredItems = mockMenuItems
-            }
-        }
-    }
-}
-
-
-struct CategoryGrid: View {
-    let category: Category
-    let items: [MenuItem]
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(category.rawValue)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.bottom, 5)
-
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 3), spacing: 10) {
-                ForEach(items) { item in
-                    NavigationLink(destination: MenuItemDetailsView()) {
-                        VStack {
-                            Image(item.imageName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                                .cornerRadius(10)
-                            
-                            Text(item.name)
-                                .font(.caption)
-                                .multilineTextAlignment(.center)
+                    if viewModel.selectedCategory == .all || viewModel.selectedCategory == .food {
+                        HStack {
+                            Text("Food")
+                                .font(.headline)
+                                .padding([.leading, .top])
+                            Spacer() // Push the text to the left
                         }
-                        .padding(5)
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(10)
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                            ForEach(viewModel.menuItems.filter { $0.category == .food }) { item in
+                                MenuItemCardView(menuItem: item)
+                            }
+                        }
+                    }
+                    
+                    if viewModel.selectedCategory == .all || viewModel.selectedCategory == .drinks {
+                        HStack {
+                            Text("Drinks")
+                                .font(.headline)
+                                .padding([.leading, .top])
+                            Spacer() // Push the text to the left
+                        }
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                            ForEach(viewModel.menuItems.filter { $0.category == .drinks }) { item in
+                                MenuItemCardView(menuItem: item)
+                            }
+                        }
+                    }
+                    
+                    if viewModel.selectedCategory == .all || viewModel.selectedCategory == .desserts {
+                        HStack {
+                            Text("Desserts")
+                                .font(.headline)
+                                .padding([.leading, .top])
+                            Spacer() // Push the text to the left
+                        }
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                            ForEach(viewModel.menuItems.filter { $0.category == .desserts }) { item in
+                                MenuItemCardView(menuItem: item)
+                            }
+                        }
                     }
                 }
             }
+            .navigationTitle("Menu")
+            .navigationBarItems(trailing: Button(action: {
+                viewModel.showFilterOptions.toggle()
+            }) {
+                Image(systemName: "slider.horizontal.3")
+            })
+            .sheet(isPresented: $viewModel.showFilterOptions) {
+                MenuItemsOptionView(viewModel: viewModel)
+            }
         }
-        .padding(.bottom, 20)
     }
 }
 

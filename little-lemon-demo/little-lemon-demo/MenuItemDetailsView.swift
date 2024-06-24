@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct MenuItemDetailsView: View {
+    let menuItem: MenuItem
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -19,27 +21,25 @@ struct MenuItemDetailsView: View {
                 Text("Price:")
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("some prices to do")
+                Text("\(menuItem.price, specifier: "%.2f")$")
                     .font(.headline)
                     .padding(.bottom, 10)
                 Text("Ordered:")
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("A number to find")
+                Text("\(menuItem.ordersCount)")
                     .font(.headline)
                     .padding(.bottom, 10)
                 Text("Ingredients:")
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("some ingredients to do")
-                    .font(.headline)
-                    .padding(.bottom, 10)
+                ForEach(menuItem.ingredients, id: \.self) { ingredient in
+                    Text(ingredient.rawValue.capitalized)
+                        .font(.headline)
+                        .padding(.bottom, 10)
+                }
+                .navigationTitle(menuItem.name)
             }
-            .navigationTitle("Food 5")
         }
     }
-}
-
-#Preview  {
-    MenuItemDetailsView()
 }

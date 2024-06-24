@@ -13,6 +13,36 @@ class MenuViewViewModel: ObservableObject {
     @Published var sortOption: SortOption = .mostPopular
     @Published var showFilterOptions: Bool = false
     
+    var sortedAndFilteredItems: [MenuItem] {
+        var filteredItems: [MenuItem]
+        
+        switch selectedCategory {
+        case .all:
+            filteredItems = menuItems
+        case .food:
+            filteredItems = menuItems.filter { $0.category == .food }
+        case .drinks:
+            filteredItems = menuItems.filter { $0.category == .drinks }
+        case .desserts:
+            filteredItems = menuItems.filter { $0.category == .desserts }
+        }
+        
+        enum SortOption: String, CaseIterable {
+            case mostPopular = "Most Popular"
+            case price = "Price $-$$$"
+            case aToZ = "A-Z"
+        }
+        return filteredItems
+    }
+    
+    func updateCategory(_ category: MenuCategory) {
+        selectedCategory = category
+    }
+    
+    func updateSortOption(_ option: SortOption) {
+        sortOption = option
+    }
+    
     
 }
 
