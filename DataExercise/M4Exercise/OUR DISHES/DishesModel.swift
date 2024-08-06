@@ -5,7 +5,7 @@ import CoreData
 @MainActor
 class DishesModel: ObservableObject {
     
-    @Published var menuItems = [MenuItem]()
+    @Published var menuItems: [MenuItem] = [] // Initialisation d'une copie vierge
         
     
     func reload(_ coreDataContext:NSManagedObjectContext) async {
@@ -14,8 +14,8 @@ class DishesModel: ObservableObject {
         
         do {
             let (data, _) = try await urlSession.data(from: url)
-            // let fullMenu = try JSONDecoder().decode(...)
-            // menuItems = ...
+            let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data) // Décodage des données JSON en un objet JSONMenu
+            menuItems = fullMenu.menu // Extraction des éléments du menu
             
             
             // populate Core Data
