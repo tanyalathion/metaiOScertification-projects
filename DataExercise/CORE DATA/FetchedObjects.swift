@@ -2,22 +2,21 @@ import Foundation
 import SwiftUI
 import CoreData
 
-
-struct FetchedObjects<T, Content>: View where T : NSManagedObject, Content : View {
+struct FetchedObjects<Dish, Content>: View where Dish : NSManagedObject, Content : View {
     
-  let content: ([T]) -> Content
+  let content: ([Dish]) -> Content
 
-  var request: FetchRequest<T>
-  var results: FetchedResults<T>{ request.wrappedValue }
+  var request: FetchRequest<Dish>
+  var results: FetchedResults<Dish>{ request.wrappedValue }
     
   init(
     predicate: NSPredicate = NSPredicate(value: true),
     sortDescriptors: [NSSortDescriptor] = [],
-    @ViewBuilder content: @escaping ([T]) -> Content
+    @ViewBuilder content: @escaping ([Dish]) -> Content
   ) {
     self.content = content
     self.request = FetchRequest(
-      entity: T.entity(),
+      entity: Dish.entity(),
       sortDescriptors: sortDescriptors,
       predicate: predicate
     )

@@ -36,7 +36,7 @@ struct OurDishes: View {
                                                             }
                                                     }
                         }
-                        .searchable(text: $searchText)
+                        .searchable(text: $searchText, prompt: "Search for dishes")
                     }
             }
             
@@ -62,16 +62,28 @@ struct OurDishes: View {
             
         }
     }
-    private func buildPredicate() -> NSPredicate {
-            if searchText.isEmpty {
-                return NSPredicate(value: true)
-            } else {
-                return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
-            }
+    
+    func buildPredicate() -> NSPredicate {
+        guard !searchText.isEmpty else {
+            return NSPredicate(value: true)
         }
-        
-        private func buildSortDescriptors() -> [NSSortDescriptor] {
-            return [NSSortDescriptor(key: "name", ascending: true)]
+        let cleanedSearchText = searchText
+        .folding(options: .diacriticInsensitive, locale: .current)
+        .lowercased()
+              
+        let predicateFormat = "name CONTAINS[c] %@"
+
+        return NSPredicate(format: predicateFormat, cleanedSearchText)
+        }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+            let sortDescriptor = NSSortDescriptor(
+                key: "name",
+                ascending: true,
+                selector: #selector(NSString.localizedStandardCompare(_:))
+            )
+            
+            return [sortDescriptor]
         }
 }
 

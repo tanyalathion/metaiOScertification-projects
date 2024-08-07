@@ -9,16 +9,16 @@ extension Dish {
             return request
         }
 
-        static func exists(title: String, context: NSManagedObjectContext) -> Bool {
-            let request = fetchRequest(forTitle: title)
-            do {
-                let count = try context.count(for: request)
-                return count > 0
-            } catch {
-                print("Error checking existence of dish: \(error)")
-                return false
-            }
+    static func exists(title: String, context: NSManagedObjectContext) -> Bool {
+        let request = fetchRequest(forTitle: title)
+        do {
+            let count = try context.count(for: request)
+            return count > 0
+        } catch {
+            print("Error checking existence of dish: \(error)")
+            return false
         }
+    }
 
     static func createDishesFrom(menuItems:[MenuItem],
                                  _ context:NSManagedObjectContext) {
