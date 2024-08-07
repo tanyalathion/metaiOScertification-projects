@@ -13,15 +13,23 @@ struct DisplayDish: View {
     }
     
     var body: some View {        
-        HStack {
-            Text(dish.name ?? "")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                    
-            Text(String(format: "$%.2f", dish.price))
-                    .font(.system(.body, design: .monospaced))
-                        .frame(alignment: .trailing)
+        VStack {
+            HStack{
+                Text(dish.name ?? "")
+                  .padding([.top, .bottom], 7)
+
+                Spacer()
+
+                Text(dish.formatPrice())
+                  .monospaced()
+                  .font(.callout)
+            }
+
+            HStack {
+                Text(dish.size ?? "")
+                Spacer()
+            }
         }
-        .padding()
         .contentShape(Rectangle()) // keep this code
     }
 }
