@@ -29,9 +29,14 @@ struct OurDishes: View {
                     sortDescriptors: buildSortDescriptors()) {
                         (dishes: [Dish]) in
                         List {
-                            // Code for the list enumeration here
+                            ForEach(dishes, id: \.self) { dish in
+                                DisplayDish(dish)
+                                                            .onTapGesture {
+                                                                showAlert.toggle()
+                                                            }
+                                                    }
                         }
-                        // add the search bar modifier here
+                        .searchable(text: $searchText)
                     }
             }
             
@@ -57,12 +62,23 @@ struct OurDishes: View {
             
         }
     }
+    private func buildPredicate() -> NSPredicate {
+            if searchText.isEmpty {
+                return NSPredicate(value: true)
+            } else {
+                return NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+            }
+        }
+        
+        private func buildSortDescriptors() -> [NSSortDescriptor] {
+            return [NSSortDescriptor(key: "name", ascending: true)]
+        }
 }
 
 struct OurDishes_Previews: PreviewProvider {
     static var previews: some View {
-        OurDishes()
-    }
+        OurDishes().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            }
 }
 
 
