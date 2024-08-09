@@ -9,11 +9,11 @@ struct JSONMenu: Codable {
 }
 
 
-struct MenuItem: Codable, Hashable, Identifiable {
+struct MenuItem: Codable, Identifiable {
     let id = UUID() // Identifiant unique pour chaque élément du menu
     
     let title: String
-    let price: Float
+    let price: String
 
     enum CodingKeys: String, CodingKey {
         case title

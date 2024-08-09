@@ -9,24 +9,27 @@ extension Dish {
             return request
         }
 
-    static func exists(title: String, context: NSManagedObjectContext) -> Bool {
-        let request = fetchRequest(forTitle: title)
+    static func exists(title: String,_ context:NSManagedObjectContext) -> Bool? {
+        let request = Dish.fetchRequest()
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", title)
+        request.predicate = predicate
+            
         do {
-            let count = try context.count(for: request)
-            return count > 0
-        } catch {
-            print("Error checking existence of dish: \(error)")
+            let results = try context.fetch(request)
+            return results.count > 0
+        } catch (let error){
+            print(error.localizedDescription)
             return false
-        }
+            }
     }
 
     static func createDishesFrom(menuItems:[MenuItem],
                                  _ context:NSManagedObjectContext) {
         for menuItem in menuItems {
-            if !exists(title: menuItem.title, context: context) {
+            if !exists(title: menuItem.title, context)! {
                 let dish = Dish(context: context)
                 dish.name = menuItem.title
-                dish.price = menuItem.price
+                dish.price = Float(Double(menuItem.price) ?? 0.0)
             }
         }
         

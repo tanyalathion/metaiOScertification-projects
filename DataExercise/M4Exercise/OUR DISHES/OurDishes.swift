@@ -40,6 +40,7 @@ struct OurDishes: View {
                     }
             }
             
+            
             // SwiftUI has this space between the title and the list
             // that is amost impossible to remove without incurring
             // into complex steps that run out of the scope of this
@@ -76,15 +77,12 @@ struct OurDishes: View {
         return NSPredicate(format: predicateFormat, cleanedSearchText)
         }
     
-    func buildSortDescriptors() -> [NSSortDescriptor] {
-            let sortDescriptor = NSSortDescriptor(
-                key: "name",
-                ascending: true,
-                selector: #selector(NSString.localizedStandardCompare(_:))
-            )
-            
-            return [sortDescriptor]
-        }
+    private func buildSortDescriptors() -> [NSSortDescriptor] {
+        [NSSortDescriptor(key: "name",
+                          ascending: true,
+                          selector:
+                            #selector(NSString.localizedStandardCompare))]
+    }
 }
 
 struct OurDishes_Previews: PreviewProvider {
